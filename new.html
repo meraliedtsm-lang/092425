@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brillmont & Meralie — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+<style>
+
+:root{
+
+  --text:#222;
+
+  --muted:#6b6b6b;
+
+  --brand:#a68a64;
+
+  --brand-2:#8c7b6b;
+
+  --card:#ffffffee;
+
+  --accent:#e8dfd0;
+
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body{
+
+  margin:0;
+
+  font-family:"Cormorant Garamond", serif;
+
+  color:var(--text);
+
+  background: url("https://plus.unsplash.com/premium_photo-1674235766088-80d8410f9523?fm=jpg&q=60&w=3000") no-repeat center center fixed;
+
+  background-size: cover;
+
+  line-height:1.6;
+
+  position: relative;
+
+}
+
+body::before {
+
+  content:"";
+
+  position:fixed;
+
+  top:0; left:0;
+
+  width:100%; height:100%;
+
+  background:rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(2px);
+
+  z-index:-1;
+
+}
+
+header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  backdrop-filter:blur(8px);
+
+  background:rgba(255,255,255,0.7);
+
+  border-bottom:1px solid #00000010;
+
+}
+
+.nav{
+
+  max-width:1100px;
+
+  margin:0 auto;
+
+  padding:12px 20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+}
+
+.brand{
+
+  font-family:"Great Vibes", cursive;
+
+  font-size:28px;
+
+  color:var(--brand);
+
+}
+
+nav a{
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  margin-left:18px;
+
+  font-weight:500;
+
+  font-family:"Playfair Display", serif;
+
+}
+
+nav a:hover{ color:var(--brand); }
+
+section{ padding:64px 20px; }
+
+.shell{ max-width:900px; margin:auto; }
+
+h1,h2{ font-family:"Playfair Display", serif; }
+
+h1{ font-size:40px; margin-bottom:10px; text-align:center; color:var(--brand-2); }
+
+h2{ margin-top:32px; font-size:26px; color: var(--brand); text-align:center; }
+
+.card{
+
+  background: var(--card);
+
+  padding:22px;
+
+  border-radius:16px;
+
+  border:1px solid #0000001a;
+
+  margin-bottom:24px;
+
+  line-height:1.5;
+
+  text-align:center;
+
+}
+
+a.btn {
+
+  display:inline-block;
+
+  padding:12px 20px;
+
+  margin:8px 0;
+
+  background:var(--brand);
+
+  color:#fff !important;
+
+  text-decoration:none;
+
+  border-radius:8px;
+
+  font-family:"Playfair Display", serif;
+
+  font-weight:600;
+
+  transition:0.3s ease;
+
+}
+
+a.btn:hover { background:var(--brand-2); }
+
+footer{
+
+  padding:40px 20px 80px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-family:"Cormorant Garamond", serif;
+
+  font-size:15px;
+
+}
+
+.message{
+
+  margin-top: 12px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+}
+
+.message.success{
+
+  background-color: #d4edda;
+
+  color: #155724;
+
+  border: 1px solid #c3e6cb;
+
+}
+
+.message.error{
+
+  background-color: #f8d7da;
+
+  color: #721c24;
+
+  border: 1px solid #f5c6cb;
+
+}
+
+.rsvp-info{
+
+  text-align:center;
+
+  margin-bottom:20px;
+
+  font-family:"Playfair Display", serif;
+
+  color:var(--brand-2);
+
+  font-size:18px;
+
+  line-height:1.5;
+
+}
+
+.countdown-container{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:12px;
+
+  margin:16px 0;
+
+}
+
+.countdown-box{
+
+  background:var(--card);
+
+  padding:16px 12px;
+
+  border-radius:12px;
+
+  border:1px solid #0000001a;
+
+  text-align:center;
+
+  min-width:60px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.countdown-box span{
+
+  display:block;
+
+  font-size:24px;
+
+  font-weight:700;
+
+  color:var(--brand);
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+}
+
+.countdown-box small{
+
+  display:block;
+
+  font-size:12px;
+
+  color:var(--muted);
+
+  margin-top:4px;
+
+}
+
+.flip{
+
+  transform: rotateX(360deg);
+
+  opacity:0;
+
+}
+
+#rsvpForm input, #rsvpForm select {
+
+  width:260px;
+
+  padding:10px;
+
+  border-radius:8px;
+
+  border:1px solid #ccc;
+
+  text-align:center;
+
+  margin:6px 0;
+
+}
+
+#rsvpForm p { text-align:center; }
+
+/* Wear section */
+
+.attire-illustration {
+
+  text-align: center;
+
+  margin-top: 20px;
+
+}
+
+.attire-illustration img {
+
+  max-width: 220px;
+
+  height: auto;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+}
+
+.color-palette {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:12px;
+
+  margin-top:20px;
+
+}
+
+.color-palette span {
+
+  display:inline-block;
+
+  width:35px;
+
+  height:35px;
+
+  border-radius:50%;
+
+  border:1px solid #ccc;
+
+}
+
+.columns{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<div class="brand">Brillmont &amp; Meralie</div>
+<nav>
+<a href="#wedding">Wedding</a>
+<a href="#rsvp">RSVP</a>
+<a href="#entourage">Entourage</a>
+<a href="#venue">Venue</a>
+<a href="#wear">What to Wear</a>
+<a href="#faq">FAQs</a>
+</nav>
+</div>
+</header>
+<!-- Wedding Section -->
+<section id="wedding" class="shell">
+<h1>Our Wedding</h1>
+<div class="card">
+<p>We are thrilled to invite you to celebrate the union of</p>
+<h2>Brillmont &amp; Meralie</h2>
+<p><strong>Saturday, December 20, 2025</strong><br>Mandaue City</p>
+<div class="countdown-container">
+<div class="countdown-box"><span id="days">0</span><small>Days</small></div>
+<div class="countdown-box"><span id="hours">0</span><small>Hours</small></div>
+<div class="countdown-box"><span id="minutes">0</span><small>Minutes</small></div>
+<div class="countdown-box"><span id="seconds">0</span><small>Seconds</small></div>
+</div>
+</div>
+</section>
+<!-- RSVP Section -->
+<section id="rsvp" class="shell">
+<h1>RSVP</h1>
+<div class="rsvp-info">
+
+    We have reserved seat(s) for you. Please reply on or before <strong>December 10, 2025</strong>.
+</div>
+<div class="card">
+<form id="rsvpForm">
+<p><label>Your Name<br><input id="guestName" required></label></p>
+<p><label>Email<br><input id="guestEmail" type="email" required></label></p>
+<p><label>Attendance<br>
+<select id="attendance" required>
+<option value="">Select…</option>
+<option>Happily Accepts</option>
+<option>Regretfully Declines</option>
+</select></label></p>
+<p><button class="btn" type="submit">Send RSVP</button></p>
+</form>
+<div id="response" class="message"></div>
+</div>
+</section>
+<!-- Entourage Section -->
+<section id="entourage" class="shell">
+<h1>Entourage</h1>
+<!-- Bride & Groom Parents -->
+<div class="card columns">
+<div>
+<h2>Bride’s Parents</h2>
+<ul>
+<li>Father: Alex Dutosme</li>
+<li>Mother: Mercy Dutosme</li>
+</ul>
+</div>
+<div>
+<h2>Groom’s Parents</h2>
+<ul>
+<li>Father: Wenefredo Tampus</li>
+<li>Mother: Maria Erma Tampus</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h2>Principal Sponsors</h2>
+<ul>
+<li>Mr. &amp; Mrs. Ralston  &amp; Efe Velano</li>
+<li>Mr. &amp; Mrs. Frederick  &amp; Juna Rayco</li>
+<li>Mr. &amp; Mrs. Salvation  &amp; Siony Mercader</li>
+<li>Mr. &amp; Mrs. John &amp Jenny Surban</li>
+<li>Mr. &amp; Mrs. Christopher &amp Marichu Luzano</li>
+<li>Mr. &amp; Mrs. Danny &amp; Joji Sagarino </li>
+<li>Mr. &amp; Mrs. Niño &amp; Phoebe Dela Cruz </li>
+<li>Mr. &amp; Mrs. Edgardo  &amp; Esmeralda Luzano </li>
+<li>Mr. &amp; Mrs. Allen  &amp; Melodia Faulkner </li>
+<li>Mr. &amp; Mrs.   &amp; </li>
+<li>Mr. &amp; Mrs.   &amp; </li>
+</ul>
+</div>/
+<div class="card">
+<h2>Veil</h2>
+<ul><li>Lucile</li></ul>
+<h2>Cord</h2>
+<ul><li>Mr. &amp; Mrs.Niño Jan & Rosana Luzano</li></ul>
+<h2>Candle</h2>
+<ul><li>Mr. &amp; Mrs. Nestor & Jocelyn Adag</ul>
+</div>
+<div class="card">
+<h2>Best Man</h2>
+<ul><li>John Martin Luzano</li></ul>
+<h2>Maid of Honor</h2>
+<ul><li>Micah Marie Dutosme</li></ul>
+</div>
+<div class="card columns">
+<div>
+<h2>Bridesmaids</h2>
+<ul>
+<li>Zuleike Margarette Jayme</li>
+<li>Precious Faith Jayme</li>
+<li>Akiko Nogra</li>
+<li>Wenna Fritz Tampus</li>
+<li>Caselle Faith Luzano/li>
+<li>Rheann Uriel Luzano</li>
+<li>Jernalyn Luzano</li>
+</ul>
+</div>
+<div>
+<h2>Groomsmen</h2>
+<ul>
+<li>Psalm Zachariah Jayme</li>
+<li>Joseph Lhee Villariasa</li>
+<li>Joshua Torilla</li>
+<li>Jay Sagarino</li>
+<li>Vence Andre Luzano</li>
+<li>Von Andrielle Luzano</li>
+<li>TBD</li>
+</ul>
+</div>
+</div>
+<div class="card columns">
+<div>
+<h2>Flower Girls</h2>
+<ul>
+<li>Nicole Christiana Fernandes</li>
+<li>Chloe Christiana Fernandes</li>
+<li>TBD</li>
+</ul>
+</div>
+<div>
+<h2>Bearers</h2>
+<ul>
+<li>Ring Bearer: David Miles Jayme</li>
+<li>Bible Bearer: Kyros Kyle Dutosme</li>
+<li>TBD</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Venue -->
+<section id="venue" class="shell">
+<h2>Venue</h2>
+<div class="card">
+<p><strong>Ceremony:</strong> Holy Family Church, Maguikay, Mandaue City</p>
+<div class="venue-frame">
+<img src="https://pleasechange.jpg" alt="Holy Family Church">
+</div>
+<p>
+<a class="btn" href="https://maps.google.com/?q=Holy+Family+Church+Maguikay+Mandaue+City" target="_blank">Open Ceremony Map</a>
+</p>
+<p><strong>Reception:</strong> Paradise Garden Events Pavilion, H. Abellana St., Jagobiao, Mandaue City</p>
+<div class="venue-frame">
+<img src="pleasechange.jpg" alt="Paradise Garden Events Pavilion">
+</div>
+<p>
+<a class="btn" href="https://maps.google.com/?q=Paradise+Garden+Events+Pavilion+Jagobiao+Mandaue+City" target="_blank">Open Reception Map</a>
+</p>
+</div>
+</section>
+</section>
+<!-- What to Wear Section -->
+<section id="wear" class="shell">
+<h2>What to Wear</h2>
+<div class="card">
+<p><strong>Gentlemen:</strong> Barong or Polo with Black Pants</p>
+<p><strong>Ladies:</strong> Gown or Dress</p>
+<p><strong>Guests:</strong> Semi-Formal</p>
+<p>We’d love to see you in these colors: Nude or any Neutral Colors</p>
+<div class="attire-illustration">
+<img src="https://static.vecteezy.com/system/resources/previews/014/945/842/non_2x/beautiful-bohemian-casual-bride-and-groom-wedding-couple-with-bride-maid-and-groomsman-cartoon-flat-sytle-vector.jpg" alt="Couple in Barong and Gown" />
+</div>
+<div class="color-palette">
+<span style="background:#d8c7c2"></span>
+<span style="background:#b89484"></span>
+<span style="background:#e2bda5"></span>
+<span style="background:#d5a889"></span>
+<span style="background:#f3e9e1"></span>
+</div>
+</div>
+</section>
+<!-- FAQs Section -->
+<section id="faq" class="shell">
+<h2>Frequently Ask Questions</h2>
+<div class="card">
+<p><strong>CAN I BRING A DATE/PLUS-ONE WITH ME?</strong><br>
+Unfortunately, no. We hope you understand that we can no longer accommodate those who are not on our guest list due to limited seats. Please respect our wishes as we're trying to keep our wedding an intimate celebration.</p>
+<p><strong>WHAT TIME SHOULD I ARRIVE?</strong><br>
+The ceremony will begin at 3:00 in the afternoon. Please arrive at least 15-30 minutes before the ceremony to park and find your seat.</p>
+<p><strong>WHAT IF I'M LATE TO THE CEREMONY?</strong><br>
+If you are late to the ceremony please DO NOT INTERRUPT, either watch from the distance, wait in your car, or go to the directed reception area. We ask that you do not take a seat as to avoid interrupting the ceremony.</p>
+<p><strong>CAN WE TAKE PHOTOS OR VIDEOS DURING THE CEREMONY?</strong><br>
+Our ceremony is unplugged and we aim to keep it solemn. All guests are requested to refrain from taking pictures/videos during the wedding ceremony.<br>
+After we are announced as Husband and Wife, you are free to take shots. Most importantly, do not block the view of our hired professional photo and video team. We will be sure to share our ceremony photos as soon as we receive them.</p>
+<p><strong>CAN WE SIT ANYWHERE AT THE RECEPTION?</strong><br>
+NO. It took us a lot of effort and discussion to finish the seating arrangement which is planned for everyone's convenience and network preference. You will be seated along with your group of friends and family.</p>
+<p><strong>WHAT TIME WILL THE FOODS AND DRINKS BE SERVED?</strong><br>
+Appetizers and refreshments will start after the ceremony. Dinner is set to be served immediately after the couple's first dance. We also prepared some activities for you to enjoy during this period.</p>
+<p><strong>DO YOU HAVE ANY PREFERENCE FOR WEDDING GIFTS?</strong><br>
+As love is what this day is all about, your presence is something we couldn't celebrate without. We are truly grateful for your time and effort just to be with us. If you wish to give something, monetary blessings as we build our forever home would be very much appreciated.</p>
+<p><strong>WHEN IS THE APPROPRIATE TIME TO LEAVE?</strong><br>
+We aim to end the program at around 10:00 PM after the Same Day Edit video finishes playing. Please enjoy the celebration and don’t eat and run.</p>
+<p><strong>DO WE REALLY NEED TO RSVP?</strong><br>
+Yes. This will help us finalize the headcount for catering and seating arrangements. Please confirm by responding to our RSVP on this e-invitation home page. If you responded YES but can't come or NO but has a change of circumstances, please let us know ASAP.</p>
+<p><strong>THIS IS A PRIVATE INVITATION</strong><br>
+We ask you to keep this invitation private. Our wedding will be a small, intimate ceremony, and only those who are closest to us are expected to be in attendance. Please do not share this with anyone. Thank you.</p>
+</div>
+</div>
+</section>
+<footer>
+
+Made with love by Brillmont &amp; Meralie • #BrillmontAndMeralieNuptials
+</footer>
+<script>
+
+// Countdown
+
+const weddingDate = new Date("December 20, 2025 15:00:00").getTime();
+
+function animateUpdate(id, value){
+
+  const el = document.getElementById(id);
+
+  if(el.textContent != value){
+
+    el.classList.add('flip');
+
+    setTimeout(()=>{ el.textContent = value; el.classList.remove('flip'); }, 300);
+
+  }
+
+}
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = weddingDate - now;
+
+  if(distance < 0){
+
+    ["days","hours","minutes","seconds"].forEach(id=>animateUpdate(id,0));
+
+    clearInterval(countdownInterval);
+
+    return;
+
+  }
+
+  const days = Math.floor(distance / (1000*60*60*24));
+
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  animateUpdate("days", days);
+
+  animateUpdate("hours", hours);
+
+  animateUpdate("minutes", minutes);
+
+  animateUpdate("seconds", seconds);
+
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+updateCountdown();
+
+// RSVP Guest list validation
+
+const guestList = [
+
+ "Brillmont Tampus","Meralie Dutosme","Mercy Dutosme","Alex Dutosme","Earl Anthony Dutosme","April Dutosme","Micah Marie Dutosme","Kyros Kyle Dutosme","",""
+,"Jessica Dolaota","Brylle Glen Garces","Jhan Eric Avenido","Emily Villariasa","Joseph Lhee Villariasa","Armando Villariasa","Eva Torilla","Ernesto Torilla","Joshua Torilla","Vanessa Orande","Kenkem Orande","Gemma Jayme","Rogelio Jayme","Winstons Jayme","Mayee Jayme","David Miles Jayme","Psalm Zachariah Jayme","Precious Faith Jayme","Precious Zane Jayme","Angeli ","Nicole Christiana Fernandes","Chloe Christiana Fernandes","Narciso Torilla","Letty Torilla","Lita Dutosme","Glen Dutosme","Shirley Dutosme","Leo Dutosme","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+
+
+
+];
+
+// RSVP form submit
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("guestName").value.trim();
+  const email = document.getElementById("guestEmail").value.trim();
+  const attendance = document.getElementById("attendance").value;
+  const response = document.getElementById("response");
+  if (guestList.includes(name)) {
+      fetch("https://script.google.com/macros/s/AKfycbyNusLUJrhWV8Y9PLjRlosY3Ol9dSa5B80PpKzmGGzEC17ZXFATUg-z3GCbaNbaBkoBqQ/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, attendance })
+      });
+      response.textContent = `Thank you, ${name}! Your RSVP has been recorded. A confirmation email has been sent to ${email}.`;
+      response.className = "message success";
+      document.getElementById("rsvpForm").reset();
+  } else {
+      response.textContent = `Sorry, ${name}, you are not on the guest list.`;
+      response.className = "message error";
+  }
+});
+
+
+
+
+
+</script>
+</body>
+</html>
+ 
